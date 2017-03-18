@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 - (IBAction)update:(id)sender;
+
+@property (weak, nonatomic) IBOutlet UITableView *table;
 @property (copy, nonatomic) NSString *testString;
+@property (copy, nonatomic) NSArray *testArray;
 @end
 
