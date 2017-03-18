@@ -13,6 +13,6 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *table;
 @property (copy, nonatomic) NSString *testString;
-@property (copy, nonatomic) NSArray *testArray;
+@property (copy, nonatomic) NSMutableArray *testArray;
 @end
 

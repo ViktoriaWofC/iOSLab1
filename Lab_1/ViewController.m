@@ -20,7 +20,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    self.testArray = [NSArray arrayWithObjects:@"Egg Benedict", @"Mushroom Risotto", @"Full Breakfast",  nil];
+    self.testArray = [[NSMutableArray alloc] init];
+    //[self.testArray addObject:[NSString stringWithFormat:@"element #%d",80]];
+    //[NSMutableArray arrayWithObjects:@"Egg Benedict", @"Mushroom Risotto", @"Full Breakfast",  nil];
 }
 
 - (IBAction)update:(id)sender {
@@ -38,6 +40,18 @@
     [alertController addAction:cancelAction];
     [alertController addAction:okAction];
     [self presentViewController:alertController animated: YES completion: nil];
+    
+    id item;
+    
+    //NSString *str = @"!!!";
+    //self.testArray = [NSMutableArray arrayWithObjects:str, @"1", @"2",  nil];
+    for (int i = 0 ; i < 5; i++)
+    {
+        item =[NSString stringWithFormat:@"element #%d",i];
+        [self.testArray addObject:item];
+    }
+
+    [self.table reloadData];
 
 }
 
