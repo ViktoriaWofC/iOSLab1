@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface ViewController : UIViewController
-
-
+- (IBAction)update:(id)sender;
+@property (copy, nonatomic) NSString *testString;
 @end
 
