@@ -41,6 +41,16 @@
     [alertController addAction:okAction];
     [self presentViewController:alertController animated: YES completion: nil];
 
+    [self updateTable];
+
+}
+
+- (void) sendRequest : (NSString *) parametr{
+    
+}
+
+- (void) updateTable{
+    [self.testArray removeAllObjects];
     id item;
     
     //NSString *str = @"!!!";
@@ -50,9 +60,7 @@
         item =[NSString stringWithFormat:@"element #%d",i];
         [self.testArray addObject:item];
     }
-        [self.table reloadData];
-
-}
+    [self.table reloadData];}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return [self.testArray count];
