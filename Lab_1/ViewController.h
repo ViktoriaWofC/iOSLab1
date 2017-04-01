@@ -12,7 +12,7 @@
 - (IBAction)update:(id)sender;
 
 @property (weak, nonatomic) IBOutlet UITableView *table;
-@property (copy, nonatomic) NSString *testString;
-@property (copy, nonatomic) NSMutableArray *testArray;
+@property (nonatomic) NSString *testString;
+@property (nonatomic) NSMutableArray *testArray;
 @end
 

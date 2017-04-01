@@ -40,7 +40,7 @@
     [alertController addAction:cancelAction];
     [alertController addAction:okAction];
     [self presentViewController:alertController animated: YES completion: nil];
-    
+
     id item;
     
     //NSString *str = @"!!!";
@@ -50,8 +50,7 @@
         item =[NSString stringWithFormat:@"element #%d",i];
         [self.testArray addObject:item];
     }
-
-    [self.table reloadData];
+        [self.table reloadData];
 
 }
 
