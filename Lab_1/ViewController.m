@@ -16,6 +16,7 @@
 @implementation ViewController
 @synthesize testString = _testString;
 @synthesize testArray = _testArray;
+UIActivityIndicatorView *indicator;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -41,16 +42,45 @@
     [alertController addAction:okAction];
     [self presentViewController:alertController animated: YES completion: nil];
 
-    [self updateTable];
-
+    //[self updateTable];
+    [self sendRequest];
 }
 
-- (void) sendRequest : (NSString *) parametr{
+- (void) sendRequest{
+    //[indicator startAnimating];
     
+    NSString *serverAddress = @"http://kparser.pp.ua/json/search/";
+    //serverAddress = [NSString stringWithFormat:@"http://kparser.pp.ua/json/search/%@", parametr];
+    
+    NSURLSession *session = [NSURLSession sharedSession];
+    NSURLSessionDataTask *getJsonTask = [session dataTaskWithURL:[NSURL URLWithString:serverAddress] completionHandler:^(NSData *data, NSURLResponse *response, NSError *error){
+        
+        NSString *jsonCiril =[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        self.json = jsonCiril;
+        
+        //MyJsonParser *parser = [[MyJsonParser alloc] init];
+        //tableData = [parser getMoviesArray:jsonCiril];
+        //tableDataID = [parser getMoviesID:jsonCiril];
+        
+        //dispatch_async(dispatch_get_main_queue(), ^{
+        //    [self.tableView reloadData];
+        //    [indicator stopAnimating];
+        //});
+        
+    }];
+    
+    id item   =[NSString stringWithFormat:@"element #%d",9];
+    [self.testArray removeAllObjects];
+    [self.testArray addObject:item];
+    
+    [self updateTable];
+    //if ([Reachability connected]) {
+    //    [getJsonTask resume];
+    //}
 }
 
 - (void) updateTable{
-    [self.testArray removeAllObjects];
+    //[self.testArray removeAllObjects];
     id item;
     
     //NSString *str = @"!!!";
