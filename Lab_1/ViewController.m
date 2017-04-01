@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "Parser.h"
 
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *testLabel;
@@ -46,38 +47,38 @@ UIActivityIndicatorView *indicator;
     [self sendRequest];
 }
 
+
+//123
 - (void) sendRequest{
     //[indicator startAnimating];
     
-    NSString *serverAddress = @"http://kparser.pp.ua/json/search/";
-    //serverAddress = [NSString stringWithFormat:@"http://kparser.pp.ua/json/search/%@", parametr];
+    NSString *serverAddress = @"http://kparser.pp.ua/json/search/Happy";
+    //@"http://kparser.pp.ua/json/search/"
+    //https://tosamara.ru/spravka/ostanovki/9
+    
     
     NSURLSession *session = [NSURLSession sharedSession];
     NSURLSessionDataTask *getJsonTask = [session dataTaskWithURL:[NSURL URLWithString:serverAddress] completionHandler:^(NSData *data, NSURLResponse *response, NSError *error){
         
-        NSString *jsonCiril =[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-        self.json = jsonCiril;
+        NSString *jsonResp =[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        self.json = jsonResp;
         
-        //MyJsonParser *parser = [[MyJsonParser alloc] init];
+        Parser *parser = [[Parser alloc] init];
         //tableData = [parser getMoviesArray:jsonCiril];
         //tableDataID = [parser getMoviesID:jsonCiril];
-        
-        //dispatch_async(dispatch_get_main_queue(), ^{
-        //    [self.tableView reloadData];
-        //    [indicator stopAnimating];
-        //});
-        
+       NSString *servetyutyus = @"https:/fghfgh vki/9";
     }];
+    
+    [getJsonTask resume];
     
     id item   =[NSString stringWithFormat:@"element #%d",9];
     [self.testArray removeAllObjects];
     [self.testArray addObject:item];
     
     [self updateTable];
-    //if ([Reachability connected]) {
-    //    [getJsonTask resume];
-    //}
+
 }
+
 
 - (void) updateTable{
     //[self.testArray removeAllObjects];

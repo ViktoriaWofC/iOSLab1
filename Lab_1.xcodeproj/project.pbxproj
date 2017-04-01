@@ -13,6 +13,7 @@
 		CE7899FC1E7CF03000F27528 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE7899FA1E7CF03000F27528 /* Main.storyboard */; };
 		CE7899FE1E7CF03000F27528 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE7899FD1E7CF03000F27528 /* Assets.xcassets */; };
 		CE789A011E7CF03000F27528 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE7899FF1E7CF03000F27528 /* LaunchScreen.storyboard */; };
+		CE789A101E8F8BB500F27528 /* Parser.m in Sources */ = {isa = PBXBuildFile; fileRef = CE789A0F1E8F8BB500F27528 /* Parser.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,8 @@
 		CE7899FD1E7CF03000F27528 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE789A001E7CF03000F27528 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CE789A021E7CF03000F27528 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CE789A0E1E8F8B9B00F27528 /* Parser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Parser.h; sourceTree = "<group>"; };
+		CE789A0F1E8F8BB500F27528 /* Parser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Parser.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +70,8 @@
 				CE7899FF1E7CF03000F27528 /* LaunchScreen.storyboard */,
 				CE789A021E7CF03000F27528 /* Info.plist */,
 				CE7899F11E7CF03000F27528 /* Supporting Files */,
+				CE789A0E1E8F8B9B00F27528 /* Parser.h */,
+				CE789A0F1E8F8BB500F27528 /* Parser.m */,
 			);
 			path = Lab_1;
 			sourceTree = "<group>";
@@ -150,6 +155,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE789A101E8F8BB500F27528 /* Parser.m in Sources */,
 				CE7899F91E7CF03000F27528 /* ViewController.m in Sources */,
 				CE7899F61E7CF03000F27528 /* AppDelegate.m in Sources */,
 				CE7899F31E7CF03000F27528 /* main.m in Sources */,
@@ -309,6 +315,7 @@
 				CE789A071E7CF03000F27528 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
