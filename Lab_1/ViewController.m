@@ -70,7 +70,7 @@ UIActivityIndicatorView *indicator;
         
         NSString *jsonResp =[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
         self.json = jsonResp;
-        NSLog(@"%@",data);
+        NSLog(@"%@",jsonResp);
         Parser *parser = [[Parser alloc] init];
         //tableData = [parser getMoviesArray:jsonCiril];
         //tableDataID = [parser getMoviesID:jsonCiril];
