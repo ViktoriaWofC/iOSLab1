@@ -52,23 +52,43 @@ UIActivityIndicatorView *indicator;
 - (void) sendRequest{
     //[indicator startAnimating];
     
-    NSString *serverAddress = @"http://kparser.pp.ua/json/search/Happy";
+    //NSString *serverAddress = @"https://tosamara.ru/xml_bridge.php";
+    NSURL *url = [NSURL URLWithString:@"https://tosamara.ru/xml_bridge.php"];
     //@"http://kparser.pp.ua/json/search/"
     //https://tosamara.ru/spravka/ostanovki/9
     
+    NSMutableURLRequest *request =[NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60.0];
+    [request setHTTPMethod:@"POST"];
+    NSString *postString = @"method=getFirstArrivalToStop&KS_ID=9&COUNT=1&version=main&eng=0";
+    [request setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
+    [request addValue:@"application/x-www-form-urlencoded " forHTTPHeaderField:@"Content-Type"];
     
-    NSURLSession *session = [NSURLSession sharedSession];
-    NSURLSessionDataTask *getJsonTask = [session dataTaskWithURL:[NSURL URLWithString:serverAddress] completionHandler:^(NSData *data, NSURLResponse *response, NSError *error){
+    
+    NSURLSessionConfiguration *conf = [NSURLSessionConfiguration defaultSessionConfiguration];
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:conf delegate:self delegateQueue:nil];
+    NSURLSessionDataTask *getJsonTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error){
         
         NSString *jsonResp =[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
         self.json = jsonResp;
+        NSLog(@"%@",data);
+        Parser *parser = [[Parser alloc] init];
+        //tableData = [parser getMoviesArray:jsonCiril];
+        //tableDataID = [parser getMoviesID:jsonCiril];
+        NSString *servetyutyus = @"https:/fghfgh vki/9";
+    }];
+    
+   /* NSURLSessionDataTask *getJsonTask = [session dataTaskWithURL:[NSURL URLWithString:serverAddress] completionHandler:^(NSData *data, NSURLResponse *response, NSError *error){
         
+        NSString *jsonResp =[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        self.json = jsonResp;
+        NSLog(@"%@",data);
         Parser *parser = [[Parser alloc] init];
         //tableData = [parser getMoviesArray:jsonCiril];
         //tableDataID = [parser getMoviesID:jsonCiril];
        NSString *servetyutyus = @"https:/fghfgh vki/9";
-    }];
+    }];*/
     
+
     [getJsonTask resume];
     
     id item   =[NSString stringWithFormat:@"element #%d",9];
