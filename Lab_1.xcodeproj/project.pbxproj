@@ -17,6 +17,7 @@
 		CE789A141E98C51F00F27528 /* images.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = CE789A131E98C51F00F27528 /* images.jpeg */; };
 		CE789A161EA1D64900F27528 /* Strings.strings in Resources */ = {isa = PBXBuildFile; fileRef = CE789A151EA1D64900F27528 /* Strings.strings */; };
 		CE789A181EA1F7D700F27528 /* File in Resources */ = {isa = PBXBuildFile; fileRef = CE789A171EA1F7D700F27528 /* File */; };
+		CE789A1A1EA1FDB700F27528 /* bus_stop_100.png in Resources */ = {isa = PBXBuildFile; fileRef = CE789A191EA1FDB700F27528 /* bus_stop_100.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 		CE789A131E98C51F00F27528 /* images.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = images.jpeg; sourceTree = "<group>"; };
 		CE789A151EA1D64900F27528 /* Strings.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Strings.strings; sourceTree = "<group>"; };
 		CE789A171EA1F7D700F27528 /* File */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = File; sourceTree = "<group>"; };
+		CE789A191EA1FDB700F27528 /* bus_stop_100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bus_stop_100.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +53,7 @@
 		CE7899E51E7CF03000F27528 = {
 			isa = PBXGroup;
 			children = (
+				CE789A191EA1FDB700F27528 /* bus_stop_100.png */,
 				CE789A131E98C51F00F27528 /* images.jpeg */,
 				CE7899F01E7CF03000F27528 /* Lab_1 */,
 				CE7899EF1E7CF03000F27528 /* Products */,
@@ -154,6 +157,7 @@
 				CE789A011E7CF03000F27528 /* LaunchScreen.storyboard in Resources */,
 				CE789A141E98C51F00F27528 /* images.jpeg in Resources */,
 				CE789A181EA1F7D700F27528 /* File in Resources */,
+				CE789A1A1EA1FDB700F27528 /* bus_stop_100.png in Resources */,
 				CE7899FE1E7CF03000F27528 /* Assets.xcassets in Resources */,
 				CE789A161EA1D64900F27528 /* Strings.strings in Resources */,
 				CE7899FC1E7CF03000F27528 /* Main.storyboard in Resources */,

@@ -94,8 +94,8 @@ UIAlertController *alertController;
     
     
     //NSString *serverAddress = @"https://tosamara.ru/xml_bridge.php";
-    NSURL *url = [NSURL URLWithString:@"https://tosamfdghfdhara.ru/xml_bridge.php"];
-    //NSURL *url = [NSURL URLWithString:@"https://tosamara.ru/xml_bridge.php"];
+    //NSURL *url = [NSURL URLWithString:@"https://tosamfdghfdhara.ru/xml_bridge.php"];
+    NSURL *url = [NSURL URLWithString:@"https://tosamara.ru/xml_bridge.php"];
     //@"http://kparser.pp.ua/json/search/"
     //https://tosamara.ru/spravka/ostanovki/9
     
