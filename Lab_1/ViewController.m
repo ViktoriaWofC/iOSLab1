@@ -18,6 +18,8 @@
 @synthesize testString = _testString;
 @synthesize testArray = _testArray;
 UIActivityIndicatorView *progress;
+UIAlertController *alertController;
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -38,6 +40,18 @@ UIActivityIndicatorView *progress;
     [self.buttonUpdate setTitle:update forState:UIControlStateNormal];
     //[self.buttonUpdate setTitle: strTabSearch];
     //[self.findButton setTitle: loc forState: UIControlStateNormal];
+    
+    alertController = [UIAlertController alertControllerWithTitle:@"Внимание!" message:@"Произошла ошибка" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Отмена" style:UIAlertActionStyleCancel handler:^(UIAlertAction * action) {
+       NSLog(@"Cancel");
+    }];
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Попробовать еще раз" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+        [self sendRequest];
+        NSLog(@"OK");
+    }];
+    
+    [alertController addAction:okAction];
+    [alertController addAction:cancelAction];
     
     
     //[self sendRequest];
@@ -80,8 +94,8 @@ UIActivityIndicatorView *progress;
     
     
     //NSString *serverAddress = @"https://tosamara.ru/xml_bridge.php";
-    //NSURL *url = [NSURL URLWithString:@"https://tosamfdghfdhara.ru/xml_bridge.php"];
-    NSURL *url = [NSURL URLWithString:@"https://tosamara.ru/xml_bridge.php"];
+    NSURL *url = [NSURL URLWithString:@"https://tosamfdghfdhara.ru/xml_bridge.php"];
+    //NSURL *url = [NSURL URLWithString:@"https://tosamara.ru/xml_bridge.php"];
     //@"http://kparser.pp.ua/json/search/"
     //https://tosamara.ru/spravka/ostanovki/9
     
@@ -104,7 +118,7 @@ UIActivityIndicatorView *progress;
         //tableDataID = [parser getMoviesID:jsonCiril];
         //NSString *servetyutyus = @"https:/fghfgh vki/9";
         
-        [self parse];
+        //[self parse];
         
         
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -112,25 +126,19 @@ UIActivityIndicatorView *progress;
             [progress stopAnimating];
             NSLog(@"2: %@", error);
             if(error!=nil){
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Внимание" message:@"Ошибка подключения!" delegate:self cancelButtonTitle:@"Попробовать еще раз" otherButtonTitles:@"Отмена", nil];
-                [alert show];            }
+                //UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Внимание" message:@"Ошибка подключения!" delegate:self cancelButtonTitle:@"Попробовать еще раз" otherButtonTitles:@"Отмена", nil];
+                //[alert show];
+                
+                [self presentViewController:alertController animated: YES completion: nil];
+            }
             else {
-            [self updateTable];
+                [self parse];
+                [self updateTable];
             }
         });
         
     }];
     
-   /* NSURLSessionDataTask *getJsonTask = [session dataTaskWithURL:[NSURL URLWithString:serverAddress] completionHandler:^(NSData *data, NSURLResponse *response, NSError *error){
-        
-        NSString *jsonResp =[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-        self.json = jsonResp;
-        NSLog(@"%@",data);
-        Parser *parser = [[Parser alloc] init];
-        //tableData = [parser getMoviesArray:jsonCiril];
-        //tableDataID = [parser getMoviesID:jsonCiril];
-       NSString *servetyutyus = @"https:/fghfgh vki/9";
-    }];*/
     
 
     [getJsonTask resume];
