@@ -25,6 +25,17 @@ UIActivityIndicatorView *indicator;
     self.testArray = [[NSMutableArray alloc] init];
     //[self.testArray addObject:[NSString stringWithFormat:@"element #%d",80]];
     //[NSMutableArray arrayWithObjects:@"Egg Benedict", @"Mushroom Risotto", @"Full Breakfast",  nil];
+    
+    NSString *fname = [[NSBundle mainBundle] pathForResource:@"Strings" ofType:@"strings"];
+    NSDictionary *d = [NSDictionary dictionaryWithContentsOfFile:fname];
+    NSString *update = [d objectForKey:@"Update"];
+    NSString *bus = [d objectForKey:@"Bus"];
+    
+    //self.testLabel.text = bus;
+    [self.testLabel setText:bus];
+    [self.buttonUpdate setTitle:update forState:UIControlStateNormal];
+    //[self.buttonUpdate setTitle: strTabSearch];
+    //[self.findButton setTitle: loc forState: UIControlStateNormal];
 }
 
 - (IBAction)update:(id)sender {

@@ -11,6 +11,7 @@
 @interface ViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 - (IBAction)update:(id)sender;
 
+@property (weak, nonatomic) IBOutlet UIButton *buttonUpdate;
 @property (weak, nonatomic) IBOutlet UITableView *table;
 @property (nonatomic) NSString *testString;
 @property (copy, nonatomic) NSString *json;
