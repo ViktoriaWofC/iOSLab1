@@ -153,7 +153,7 @@ UIAlertController *alertController;
 
 -(void) parse{
     
-    NSString *pattern =@"\\b(trans-bus)|(trans-trol)\\b([a-z0-9<>])\\b(</td>)\\b";
+    NSString *pattern =@"([0-9]{1,}[:])";
     NSError *err = NULL;
     
     NSRegularExpressionOptions regularOptions = NSRegularExpressionCaseInsensitive;
