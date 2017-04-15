@@ -1,0 +1,61 @@
+<table class="trans">
+<thead>
+<tr>
+<td width="9%"><font size="1">Время,<br />мин</font></td>
+<td width="50%">Маршрут, модель ТС и госномер</td>
+<td>Текущее положение</td>
+</tr>
+</thead>
+<tbody>
+<tr class="trans-bus ">
+<td class="trans-num">1</td>
+<td class="trans-name">
+<a href="/spravka/marshruti/38/" class="route-bus route-bus-s">
+37: 14-й микрорайон → Хлебная площадь									</a>
+<div class="trans-model">
+<pre style="display:none">
+SimpleXMLElement Object
+(
+[KR_ID] => 38
+[KS_ID] => 9
+[timeTo] => 9.899999999999999
+[KT_ID] => 822006
+[stateNumber] => ЕК117 63
+[modelTitle] => SimpleXMLElement Object
+(
+)
+
+[forInvalid] => false
+[nextStopId] => 9
+[nextStopName] => Аэрокосмический Университет
+[remainingLength] => 120.3
+[edgeLength] => 756.7
+)
+
+</pre>
+| ЕК117 63									</div>
+</td>
+<td class="trans-position">
+120 м до Аэрокосмический Университет																	</td>
+</tr>
+<tr class="trans-bus ">
+<td class="trans-num">1</td>
+<td class="trans-name">
+<a href="/spravka/marshruti/1/" class="route-bus route-bus-s">
+1: Красная Глинка → Железнодорожный вокзал									</a>
+<div class="trans-model">
+<pre style="display:none">
+SimpleXMLElement Object
+(
+[KR_ID] => 1
+[KS_ID] => 9
+[timeTo] => 28.4
+[KT_ID] => 822710
+[stateNumber] => У056ТК 163
+[modelTitle] => ЛИАЗ 529370
+[forInvalid] => true
+[nextStopId] => 9
+[nextStopName] => Аэрокосмический Университет
+[remainingLength] => 144.4
+[edgeLength] => 756.7
+)
