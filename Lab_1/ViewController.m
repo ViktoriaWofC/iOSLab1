@@ -94,8 +94,8 @@ UIAlertController *alertController;
     
     
     //NSString *serverAddress = @"https://tosamara.ru/xml_bridge.php";
-    //NSURL *url = [NSURL URLWithString:@"https://tosamfdghfdhara.ru/xml_bridge.php"];
-    NSURL *url = [NSURL URLWithString:@"https://tosamara.ru/xml_bridge.php"];
+    NSURL *url = [NSURL URLWithString:@"https://tosamfdghfdhara.ru/xml_bridge.php"];
+    //NSURL *url = [NSURL URLWithString:@"https://tosamara.ru/xml_bridge.php"];
     //@"http://kparser.pp.ua/json/search/"
     //https://tosamara.ru/spravka/ostanovki/9
     
@@ -133,7 +133,7 @@ UIAlertController *alertController;
             }
             else {
                 [self parse];
-                [self updateTable];
+                //[self updateTable];
             }
         });
         
@@ -143,81 +143,6 @@ UIAlertController *alertController;
 
     [getJsonTask resume];
     
-    
-    /*PARSE
-     
-     _testString = @"<tr class=truns-bus> <td class=trans-num>1</td> num>3</td> <tr class=truns-trol> <td class=trans-name> 445: <a href=/spravka/marshruti/38/ class=route-bus route-bus-s> 37: 14-й микрорайон → Хлебная площадь";
-     
-     
-     NSRegularExpressionOptions regexOptions = NSRegularExpressionCaseInsensitive;
-     NSError *error = nil;
-     
-     NSTextCheckingResult *time = nil;
-     NSTextCheckingResult *metka = nil;
-     
-     NSRange numberElement;
-     NSRange timeElement;
-     NSRange metkaElement;
-     
-     NSString *metkaString;
-     NSString *numberString;
-     NSString *numberResult;
-     NSString *timeString;
-     NSString *timeResult;
-     
-     
-     //number
-     NSString *numberPattern = @"[0-9]{1,}[:]";
-     NSRegularExpression *numberRegex = [NSRegularExpression regularExpressionWithPattern:numberPattern options:regexOptions error:&error];
-     NSArray *numbers= [numberRegex matchesInString:_testString options:0 range:NSMakeRange(0, [_testString length])];
-     
-     //time
-     NSString *timePattern = @"[b1-9]{1,}[<]";
-     NSRegularExpression *timeRegex = [NSRegularExpression regularExpressionWithPattern:timePattern options:regexOptions error:&error];
-     NSArray *times= [timeRegex matchesInString:_testString options:0 range:NSMakeRange(0, [_testString length])];
-     
-     //metka
-     NSString *metPattern = @"s-[bt]";
-     NSRegularExpression *metRegex = [NSRegularExpression regularExpressionWithPattern:metPattern options:regexOptions error:&error];
-     NSArray *mets= [metRegex matchesInString:_testString options:0 range:NSMakeRange(0, [_testString length])];
-     
-     
-     NSInteger i = 0;
-     for(NSTextCheckingResult *number in numbers)
-     {
-        time  = [times objectAtIndex:i];
-        metka = [mets objectAtIndex:i];
-     
-        numberElement = [number range];
-        timeElement = [time range];
-        metkaElement = [metka range];
-     
-        metkaString = [_testString substringWithRange:metkaElement];
-     
-        numberString = [_testString substringWithRange:numberElement];
-        numberResult = [numberString substringWithRange:NSMakeRange(0, [numberString length]-1)];
-     
-        timeString = [_testString substringWithRange:timeElement];
-        timeResult = [timeString substringWithRange:NSMakeRange(0, [timeString length]-1 )];
-     
-        if([metkaString isEqualToString:@"s-b"])
-        {
-            NSLog(@"This is a bus with number %@ and time %@", numberResult, timeResult);
-        }
-        else
-        {
-            if([metkaString isEqualToString:@"s-t"])
-            {
-                NSLog(@"This is a trolleybus with number %@ and time %@", numberResult, timeResult);
-            }
-            else
-            {
-                NSLog(@"Unknow");
-            }
-        }
-        i = i+1;
-     }
-     */
     
     
     
@@ -237,7 +162,89 @@ UIAlertController *alertController;
 
 -(void) parse{
     
-    NSString *pattern =@"([0-9]{1,}[:])";
+    
+    NSRegularExpressionOptions regexOptions = NSRegularExpressionCaseInsensitive;
+    NSError *error = nil;
+    
+    NSTextCheckingResult *time = nil;
+    NSTextCheckingResult *metka = nil;
+    NSTextCheckingResult *number = nil;
+    
+    NSRange numberElement;
+    NSRange timeElement;
+    NSRange metkaElement;
+    
+    NSString *metkaString;
+    NSString *numberString;
+    NSString *numberResult;
+    NSString *timeString;
+    NSString *timeResult;
+    
+    
+    //number
+    NSString *numberPattern = @"[0-9]{1,}[:]";
+    NSRegularExpression *numberRegex = [NSRegularExpression regularExpressionWithPattern:numberPattern options:regexOptions error:&error];
+    NSArray *numbers= [numberRegex matchesInString:self.json options:0 range:NSMakeRange(0, [self.json length])];
+    
+    //time
+    NSString *timePattern = @"[b1-9]{1,}[<]";
+    NSRegularExpression *timeRegex = [NSRegularExpression regularExpressionWithPattern:timePattern options:regexOptions error:&error];
+    NSArray *times= [timeRegex matchesInString:self.json options:0 range:NSMakeRange(0, [self.json length])];
+    
+    //metka
+    NSString *metPattern = @"s-[bt]";
+    NSRegularExpression *metRegex = [NSRegularExpression regularExpressionWithPattern:metPattern options:regexOptions error:&error];
+    NSArray *mets= [metRegex matchesInString:self.json options:0 range:NSMakeRange(0, [self.json length])];
+    
+    NSInteger count = [timeRegex numberOfMatchesInString:self.json options:0 range:NSMakeRange(0,[self.json length])];
+    //self.testArray = [[NSMutableArray alloc] init];
+    [self.testArray removeAllObjects];
+    NSInteger i = 0;
+    id item;
+    for(; i< count;i++)//for(NSTextCheckingResult *number in numbers)
+    {
+        time  = [times objectAtIndex:i];
+        metka = [mets objectAtIndex:i];
+        number  = [numbers objectAtIndex:i];
+        
+        numberElement = [number range];
+        timeElement = [time range];
+        metkaElement = [metka range];
+        
+        metkaString = [self.json substringWithRange:metkaElement];
+        
+        numberString = [self.json substringWithRange:numberElement];
+        numberResult = [numberString substringWithRange:NSMakeRange(0, [numberString length]-1)];
+        
+        timeString = [self.json substringWithRange:timeElement];
+        timeResult = [timeString substringWithRange:NSMakeRange(0, [timeString length]-1 )];
+        
+        if([metkaString isEqualToString:@"s-b"])
+        {
+            NSLog(@"This is a bus with number %@ and time %@", numberResult, timeResult);
+            item =[NSString stringWithFormat:@"%@  Автобус, %@ мин",numberResult, timeResult];
+            [self.testArray addObject:item];
+        }
+        else
+        {
+            if([metkaString isEqualToString:@"s-t"])
+            {
+                NSLog(@"This is a trolleybus with number %@ and time %@", numberResult, timeResult);
+                item =[NSString stringWithFormat:@"%@  Троллейбус, %@ мин",numberResult, timeResult];
+                [self.testArray addObject:item];
+            }
+            else
+            {
+                NSLog(@"Unknow");
+            }
+        }
+        //i = i+1;
+    }
+    
+    
+
+    [self.table reloadData];
+    /*NSString *pattern =@"([0-9]{1,}[:])";
     NSError *err = NULL;
     
     NSRegularExpressionOptions regularOptions = NSRegularExpressionCaseInsensitive;
@@ -252,7 +259,9 @@ UIAlertController *alertController;
     if(!NSEqualRanges(range, NSMakeRange(NSNotFound, 0))){
         NSString *str = [self.json substringWithRange:range];
         NSLog(@"%@",str);
-    }
+    }*/
+    
+    
 }
 
 

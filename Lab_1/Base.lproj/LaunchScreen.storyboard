@@ -21,7 +21,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bus_stop_100.png" translatesAutoresizingMaskIntoConstraints="NO" id="eih-9K-6vK">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bus_stop_150_2.png" translatesAutoresizingMaskIntoConstraints="NO" id="eih-9K-6vK">
                                 <rect key="frame" x="120" y="197" width="130" height="130"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -35,6 +35,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="bus_stop_100.png" width="100" height="100"/>
+        <image name="bus_stop_150_2.png" width="200" height="200"/>
     </resources>
 </document>
